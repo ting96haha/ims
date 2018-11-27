@@ -1,0 +1,59 @@
+problem statement : no real time notification of updates from mmls.
+
+business
+target audience : students of MMU
+
+Project :
+Instant real time mmls post monitoring system
+instant mmls notifications (IMN)
+
+client needs :
+want real time monitoring of mmls post, but lazy to login and check manually
+
+solution :
+have an automated post monitoring app on the phone.
+
+roles
+Project manager : Chai Yee Ting
+Sales Engineer : Haziq Imran
+Product Owner : Hor Sui Lyn
+Planner : Liyana Safinaz
+Developer : Nabil
+Editor/Secretary : Jason
+
+Assignment of tasks : 
+Nabil - Learn & install android studios
+Haziq - come up with some questions
+Sui Lyn - build relationship so that they answer surveys
+Liyana - Setup or learn how to generate nice gantt charts
+Jason - Type the minutes
+Chai Yee Ting - Prepare for next meeting
+
+intra-team deliverables (wednesday 12pm):
+liyana-gantt chart
+yeeting-budget/cost
+haziq - business
+jason - minutes/compile
+suilyn - survey
+nabil - android studios.
+
+wk1 - team forming
+wk2 - survey & planning
+wk3 - development, survey
+wk4 - feedback and review
+wk5 - planning
+.
+.
+wk8 - feedback
+wk9 - final planning
+wk10 - final release
+
+
+
+
+
+
+
+
+
+
