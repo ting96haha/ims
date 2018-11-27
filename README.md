@@ -1,4 +1,5 @@
-# This is the main repo for our project management subject assignment
+# Instant MMLS Notification
+## This is the main repo for our project management subject assignment
 
 ### This repo shall store the following
 
