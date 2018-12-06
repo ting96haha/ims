@@ -26,17 +26,33 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.jsoup.Connection.Method;
 
+public class PageParser{
+  //constructor
+
+  //private MMLSclient obj; obj.get()
+
+  //post parser
+
+  //checksum
+
+  //search("title") returns PostParser.get(document)
+}
+
+public class ClassParser{
+  //post
+}
+
 public class PostParser{
 
     //constructor("title","document")
 
-    //constructor()
+    //constructor("file")
 
-    //set / get methods
+    //get methods
 
     //save to file saveFile("filename")
 
-    //load from file ("filename")
 
-    
+    //display (android) (don't implement this yet)
+    //share
 }
