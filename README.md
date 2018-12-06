@@ -18,4 +18,5 @@
 6. Nabil Nasrudin
 
 * Additionally, this github serves as the project management tool that we shall use to coordinate our activities.
+** this repo contains the jsoup library. credits to the original author.
 
