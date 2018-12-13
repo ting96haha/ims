@@ -1,1 +1,0 @@
-Please place all these into "project name" > app > src > main > res > drawable
