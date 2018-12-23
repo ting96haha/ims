@@ -44,13 +44,64 @@ public class MMLSclient{
     stud_id = a_id;
     stud_pw = a_pw;
   }
-
+  
   public void testFunc(){
     //run testing code here.
     auth_session = login();
+	
     try{
-      System.out.println(auth_session.get());
-    }
+		
+      //System.out.println(auth_session.get());
+		Document doc = auth_session.get();
+	 
+	 
+		//title of the home page
+		 System.out.println("--------------------THIS IS THE HOME TITLE----------------------------------"); 
+		 String title = doc.title();
+		 System.out.println("\n\t"+title+"\n");
+		
+		 //classtitle
+		System.out.println("--------------------THIS IS THE CLASS TITLE----------------------------------"); 
+		Elements classTitle = doc.select("div[class^=panel-heading]");
+		System.out.println("\n"+classTitle.text());
+		System.out.println("\n\n");
+		
+		/** OPTIONAL METHOD TO GET THE title
+		Elements c = doc.select(".panel-heading:contains(-)");
+		System.out.println("\n"+c.text());
+		System.out.println("\n\n");
+		**/
+		
+		//tab title - announcement/lecture notes/tutorial
+		System.out.println("--------------------THIS IS THE TAB TITLE----------------------------------\n\n");
+		Elements links = doc.select("a[data-toggle=tab]");
+		  for (Element link : links) {
+			 System.out.println(link.text()+"\n");
+			}
+			
+		// title of the announcement 	
+		System.out.println("\n---------title of the announcement -------------");
+		Elements a = doc.getElementsByTag("font");
+		System.out.println("\n\n"+a.text()+"\n\n");
+	
+		//	print content
+		System.out.println("--------------------THIS IS THE CONTENT----------------------------------\n\n");	
+		Elements paragraphs = doc.getElementsByTag("p");
+			for (Element paragraph : paragraphs) {
+				System.out.println("\t\t"+paragraph.text());
+			}	
+		 System.out.println("\n\n");
+		//lecturer and dates
+		System.out.println("\n---------lecturer and dates--------");
+		Elements i = doc.getElementsByTag("i");
+		System.out.println(i.text());
+		
+		
+		
+		
+		
+	} 
+	
     catch (Exception e){
       e.printStackTrace();
     }
