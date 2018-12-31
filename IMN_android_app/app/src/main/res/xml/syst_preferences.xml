@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/pref_title_system_setting_page" >
+
+        <SwitchPreferenceCompat
+            android:key="prefNotify"
+            android:title="@string/pref_title_system_notify_settings"
+            android:summary="@string/pref_summr_system_notify_settings"/>
+
+        <ListPreference
+            android:key="prefSyncFrequency"
+            android:entries="@array/syncFrequency"
+            android:summary="@string/pref_summr_system_sync_settings"
+            android:entryValues="@array/syncFrequencyValues"
+            android:title="@string/pref_title_system_sync_settings" />
+
+        <ListPreference
+            android:key="prefClearFrequency"
+            android:entries="@array/clearFrequency"
+            android:summary="@string/pref_summr_system_clr_settings"
+            android:entryValues="@array/clearFrequencyValues"
+            android:title="@string/pref_title_system_clr_settings" />
+
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

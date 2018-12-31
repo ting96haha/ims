@@ -18,18 +18,18 @@
             android:orientation="vertical"
             android:paddingTop="10dp">
 
-            <include layout="@layout/item_nested_scrollview"/>
-            <include layout="@layout/item_nested_scrollview"/>
-            <include layout="@layout/item_nested_scrollview"/>
-            <include layout="@layout/item_nested_scrollview"/>
-            <include layout="@layout/item_nested_scrollview"/>
-            <include layout="@layout/item_nested_scrollview"/>
-            <include layout="@layout/item_nested_scrollview"/>
-            <include layout="@layout/item_nested_scrollview"/>
-            <include layout="@layout/item_nested_scrollview"/>
-            <include layout="@layout/item_nested_scrollview"/>
-            <include layout="@layout/item_nested_scrollview"/>
-            <include layout="@layout/item_nested_scrollview"/>
+            <include layout="@layout/item_standard_post_view"/>
+            <include layout="@layout/item_standard_post_view"/>
+            <include layout="@layout/item_standard_post_view"/>
+            <include layout="@layout/item_standard_post_view"/>
+            <include layout="@layout/item_standard_post_view"/>
+            <include layout="@layout/item_standard_post_view"/>
+            <include layout="@layout/item_standard_post_view"/>
+            <include layout="@layout/item_standard_post_view"/>
+            <include layout="@layout/item_standard_post_view"/>
+            <include layout="@layout/item_standard_post_view"/>
+            <include layout="@layout/item_standard_post_view"/>
+            <include layout="@layout/item_standard_post_view"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </FrameLayout>

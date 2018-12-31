@@ -1,2 +1,3 @@
-javac mmls/MMLSclient.java -Xlint:unchecked
-javac ClassTester.java -Xlint:unchecked
+javac mmls/*.java -verbose -Xlint:unchecked -Xlint:deprecation
+javac ClassTester.java -verbose -Xlint:unchecked -Xlint:deprecation
+

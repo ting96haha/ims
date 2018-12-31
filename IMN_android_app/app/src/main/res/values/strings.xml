@@ -4,6 +4,21 @@
     <string name="id">Student ID</string>
     <string name="login">LOG IN</string>
 
+    <!-- PREFERENCES STRING -->
+    <string name="pref_settinglabel">Settings Page</string>
+    <string name="pref_title_system_setting_page">System Settings</string>
+    <string name="pref_title_user_setting_page">User Preferences</string>
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+    <string name="pref_summr_system_sync_settings">Set the frequency of syncing with MMLS</string>
+    <string name="pref_title_system_clr_settings">System clear settings</string>
+    <string name="pref_summr_system_clr_settings">Set the frequency of clearing cached posts</string>
+    <string name="pref_title_system_notify_settings">Notifications</string>
+    <string name="pref_summr_system_notify_settings">Toggle notifications</string>
+    <string name="pref_title_user_id">MMLS Student ID</string>
+    <string name="pref_summr_user_id">Your MMLS student ID goes here!</string>
+    <string name="pref_title_user_pw">MMLS password</string>
+    <string name="pref_summr_user_pw">Your MMLS password goes here. Do not worry, it is safe!</string>
+
     <string name="tab_new_post">New</string>
     <string name="tab_old_post">Old</string>
     <string name="tab_starred_post">Starred</string>
@@ -19,21 +34,7 @@
     <string name="update_frequency">Check for update every </string>
     <string name="clear_frequency">Clear posts exceeding </string>
 
-    <string-array name = "frequency">
-        <item>15 minutes</item>
-        <item>2 hours</item>
-        <item>6 hours</item>
-        <item>1 day</item>
-        <item>3 days</item>
-        <item>Never</item>
-    </string-array>
 
-    <string-array name = "clear">
-        <item>1 day</item>
-        <item>1 week</item>
-        <item>1 month</item>
-        <item>Clear All</item>
-    </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -100,7 +101,7 @@
 
     <string-array name="multi_select_list_preference_default_value" />
 
-    <string name="pref_title_system_sync_settings">System sync settings</string>
+
 
     <!-- Example settings for Notifications -->
     <string name="pref_header_notifications">Notifications</string>

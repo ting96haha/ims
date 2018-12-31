@@ -2,28 +2,44 @@ package altf4.imn;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
-/**
- * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
- * one of the sections/tabs/pages.
- */
-public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-    public SectionsPagerAdapter(FragmentManager fm) {
+public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
+
+    //integer to count number of tabs
+    int tabCount;
+    private static final String logtag = "PagerFragment";
+
+    //Constructor to the class
+    public SectionsPagerAdapter(FragmentManager fm, int tabCount) {
         super(fm);
+        //Initializing tab count
+        this.tabCount= tabCount;
     }
 
+    //Overriding method getItem
     @Override
     public Fragment getItem(int position) {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
-        return account.PlaceholderFragment.newInstance(position + 1);
+        //Returning the current tabs
+        switch (position) {
+            case 0:
+                NewPostFragment tab1 = new NewPostFragment();
+                return tab1;
+            case 1:
+                StarredPostFragment tab2 = new StarredPostFragment();
+                return tab2;
+            case 2:
+                OldPostFragment tab3 = new OldPostFragment();
+                return tab3;
+            default:
+                return null;
+        }
     }
 
+    //Overriden method getCount to get the number of tabs
     @Override
     public int getCount() {
-        // Show 3 total pages.
-        return 3;
+        return tabCount;
     }
 }

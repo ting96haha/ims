@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".account">
+    tools:context=".AccountActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -32,24 +32,6 @@
             android:background="@color/design_default_color_primary"
             app:tabIndicatorColor="@color/colorWhite"
             app:tabTextColor="@color/colorWhite">
-
-            <android.support.design.widget.TabItem
-                android:id="@+id/tabItem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tab_new_post" />
-
-            <android.support.design.widget.TabItem
-                android:id="@+id/tabItem2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tab_old_post" />
-
-            <android.support.design.widget.TabItem
-                android:id="@+id/tabItem3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tab_starred_post" />
 
         </android.support.design.widget.TabLayout>
     </android.support.design.widget.AppBarLayout>

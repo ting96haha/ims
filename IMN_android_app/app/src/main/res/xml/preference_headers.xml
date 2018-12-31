@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<preference-headers
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <header android:fragment="altf4.imn.SettingsActivity$UserSettFragment"
+        android:icon="@mipmap/green_user"
+        android:title="User Settings"
+        android:summary="User dependent values." />
+
+    <header android:fragment="altf4.imn.SettingsActivity$SystSettFragment"
+        android:icon="@mipmap/blue_settings"
+        android:title="System Settings"
+        android:summary="Configuration values for the system." />
+
+    <!--<header android:fragment="com.example.android.apis.preference.PreferenceWithHeaders$Prefs2Fragment"-->
+        <!--android:icon="@drawable/ic_settings_display"-->
+        <!--android:title="Prefs 2"-->
+        <!--android:summary="Some other syst_preferences you can see.">-->
+        <!--&lt;!&ndash; Arbitrary key/value pairs can be included with a header as-->
+             <!--arguments to its fragment. &ndash;&gt;-->
+        <!--<extra android:name="someKey" android:value="someHeaderValue" />-->
+    <!--</header>-->
+
+    <!--<header android:icon="@drawable/ic_settings_display"-->
+        <!--android:title="Intent"-->
+        <!--android:summary="Launches an Intent.">-->
+        <!--<intent android:action="android.intent.action.VIEW"-->
+            <!--android:data="http://www.android.com" />-->
+    <!--</header>-->
+
+</preference-headers>
