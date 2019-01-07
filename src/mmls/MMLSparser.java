@@ -84,7 +84,7 @@ public class MMLSparser{
     //String student_id = "1161300548";
     //retrClassDat("1161300548");
     //readClassDat("1161300549");
-
+    retrPOSTElement();
   }
 
   public void setDoc(Document a_target){
@@ -167,19 +167,29 @@ public class MMLSparser{
 
   private void retrPOSTElement(){
     /*Author: Nabil Nasurdin*/
+
+    List<String> courseTitleList = new ArrayList<String>(); //init titleList
+    List<String> postTitleList = new ArrayList<String>();
+    List<String> postContent = new ArrayList<String>();
+    List<String> postAuthor = new ArrayList<String>();
+    List<String> postDate = new ArrayList<String>();
+
     try{
 
     //System.out.println(auth_session.get());
-    Document doc = auth_session.get();
 
       //title of the home page
       System.out.println("--------------------THIS IS THE HOME TITLE----------------------------------");
-      String title = doc.title();
+      String title = target_doc.title();
       System.out.println("\n\t"+title+"\n");
+
 
       //classtitle
       System.out.println("--------------------THIS IS THE CLASS TITLE----------------------------------");
-      Elements classTitle = doc.select("div[class^=panel-heading]");
+      Elements classTitle = target_doc.select("div[class^=panel-heading]");
+      for(Element PaneHeading : classTitle){
+
+      }
       System.out.println("\n"+classTitle.text());
       System.out.println("\n\n");
 
@@ -191,26 +201,26 @@ public class MMLSparser{
 
       //tab title - announcement/lecture notes/tutorial
       System.out.println("--------------------THIS IS THE TAB TITLE----------------------------------\n\n");
-      Elements links = doc.select("a[data-toggle=tab]");
+      Elements links = target_doc.select("a[data-toggle=tab]");
       for (Element link : links) {
       System.out.println(link.text()+"\n");
       }
 
       // title of the announcement
       System.out.println("\n---------title of the announcement -------------");
-      Elements a = doc.getElementsByTag("font");
+      Elements a = target_doc.getElementsByTag("font");
       System.out.println("\n\n"+a.text()+"\n\n");
 
       //	print content
       System.out.println("--------------------THIS IS THE CONTENT----------------------------------\n\n");
-      Elements paragraphs = doc.getElementsByTag("p");
+      Elements paragraphs = target_doc.getElementsByTag("p");
       for (Element paragraph : paragraphs) {
       System.out.println("\t\t"+paragraph.text());
       }
       System.out.println("\n\n");
       //lecturer and dates
       System.out.println("\n---------lecturer and dates--------");
-      Elements i = doc.getElementsByTag("i");
+      Elements i = target_doc.getElementsByTag("i");
       System.out.println(i.text());
 
     }catch (Exception e){
