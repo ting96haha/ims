@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtContent"
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtTitle"
             android:layout_marginLeft="5dp"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
         <!--
 
@@ -61,8 +61,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginTop="0dp"
-            android:layout_marginEnd="52dp"
-            android:layout_marginRight="26dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
             app:srcCompat="@drawable/ic_view_24dp" />
     </RelativeLayout>
 

@@ -64,6 +64,22 @@ public class Posthandler  implements Serializable{
     return postlist.get(index);
   }
 
+  public List<MMLSpost> getUnnotifiedPost(Boolean setNotify){
+    List<MMLSpost> out = new ArrayList<MMLSpost>();
+
+    for(MMLSpost p : this.postlist){
+      if(!p.isNotified()){
+        p.postprint();
+        if(setNotify){
+          out.add(p);
+          p.notifyPost();
+        }
+      }
+    }
+    return out;
+  }
+
+
   public int getCount(){
     return postlist.size();
   }
@@ -78,6 +94,7 @@ public class Posthandler  implements Serializable{
       System.out.println();
     }
   }
+
   public void displayUnNotifiedPost(Boolean setNotify){
     for(MMLSpost p : this.postlist){
       if(!p.isNotified()){
