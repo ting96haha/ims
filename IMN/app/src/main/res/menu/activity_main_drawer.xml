@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/new_post"
+            android:icon="@drawable/new_black"
+            android:title="New Posts" />
+
+        <item
+            android:id="@+id/old_post"
+            android:icon="@drawable/clock_black"
+            android:title="Old Posts" />
+
+        <item
+            android:id="@+id/get_post"
+            android:icon="@drawable/cloud_black"
+            android:title="Get Posts Now" />
+
+    </group>
+
+    <item android:title="Settings">
+        <menu>
+            <item
+                android:id="@+id/user_profile"
+                android:icon="@drawable/user_black"
+                android:title="MMLS Account" />
+
+            <item
+                android:id="@+id/reload_freq"
+                android:icon="@drawable/sync_black"
+                android:title="Reload Frequency" />
+            <!--
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+            -->
+        </menu>
+    </item>
+
+</menu>

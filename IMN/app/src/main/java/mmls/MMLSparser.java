@@ -204,20 +204,23 @@ public class MMLSparser{
             if(p.hasClass("content_activity")){
               ccounter++;
               //System.out.println(p);
-              String postTitle = p.select("font").text();
-              String postAuthr = p.select(".blur_text > i").first().text();
-              String postDate = p.select(".blur_text > img")
-                .next().next().first().nextSibling().toString().split("&")[0].trim();
-              String postCont = p.select("p").text();
-              if(printOutput){
-                System.out.println("Post Title :"+postTitle);
-                System.out.println("Author :"+postAuthr);
-                System.out.println("Date :"+postDate);
-                System.out.println("Content :"+postCont);
-                System.out.println();
+              try{
+                String postTitle = p.select("font").text();
+                String postAuthr = p.select(".blur_text > i").first().text();
+                String postDate = p.select(".blur_text > img")
+                        .next().next().first().nextSibling().toString().split("&")[0].trim();
+                String postCont = p.select("p").text();
+                if(printOutput){
+                  System.out.println("Post Title :"+postTitle);
+                  System.out.println("Author :"+postAuthr);
+                  System.out.println("Date :"+postDate);
+                  System.out.println("Content :"+postCont);
+                  System.out.println();
+                }
+                out.add(new MMLSpost(courseTitle,postTitle,postCont,postAuthr,postDate));
+              }catch(Exception ex){
+                ex.printStackTrace();
               }
-              out.add(new MMLSpost(courseTitle,postTitle,postCont,postAuthr,postDate));
-
             }else{
 
             }

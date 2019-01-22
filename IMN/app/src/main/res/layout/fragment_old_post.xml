@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewPostFragment">
+    tools:context=".fragments.OldPostFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -22,4 +22,5 @@
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
+
 </FrameLayout>
