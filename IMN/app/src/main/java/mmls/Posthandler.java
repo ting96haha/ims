@@ -73,7 +73,7 @@ public class Posthandler  implements Serializable{
     List<Integer> out = new ArrayList<>();
 
     for(int i=0;i<this.postlist.size();i++){
-      if(postlist.get(i).isNotified() == isNotified){
+      if(!(postlist.get(i).isNotified() ^ isNotified)){
         postlist.get(i).postprint();
         out.add(i);
       }
