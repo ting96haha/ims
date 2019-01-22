@@ -96,6 +96,19 @@ public class Posthandler  implements Serializable{
     }
   }
 
+  public void displayUnNotifiedPost(Boolean setNotify){
+    for(MMLSpost p : this.postlist){
+      if(!p.isNotified()){
+        p.postprint();
+        if(setNotify){
+          p.notifyPost();
+        }
+        System.out.println();
+      }
+    }
+  }
+
+
   public void saveFile(String filename){
     //saves the file under the directory student_id
     //the actual file id is the course_id (class_id)
