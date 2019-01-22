@@ -50,6 +50,11 @@ public class MainActivity extends AppCompatActivity
         //nmaster = new NotificationMaster(this);
         //nmaster.showStringNotification(this,"TEST");//show a simple notification
 
+        //default on NewPostFragment
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.content_frame, new NewPostFragment());
+        ft.commit();
+
     }
 
     @Override
