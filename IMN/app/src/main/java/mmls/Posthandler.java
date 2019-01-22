@@ -1,6 +1,8 @@
 package mmls;
 //handles arrays of MMLSposts
 
+import android.util.Log;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -15,7 +17,6 @@ import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
 
 public class Posthandler  implements Serializable{
-
   private List<MMLSpost> postlist;
 
   public Posthandler(){
