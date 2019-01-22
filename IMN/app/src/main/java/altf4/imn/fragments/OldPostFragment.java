@@ -23,7 +23,7 @@ import mmls.Posthandler;
 public class OldPostFragment extends Fragment {
     View view;
     Posthandler postmaster;
-    List<MMLSpost> listOfPosts;
+    List<Integer> postIndexi;
     LinearLayout insertion_point;
 
     private static final String logtag = "IMN_DEBUG_TEST";
@@ -55,15 +55,14 @@ public class OldPostFragment extends Fragment {
         }
 
         //obtain list of notified posts
-        listOfPosts = postmaster.getPostList(true);
+        postIndexi = postmaster.getPostList(true);
 
 
-        Log.d(logtag,"size: " + listOfPosts.size());
+        Log.d(logtag,"size: " + postIndexi.size());
         //create each unnotified post
-        for(int i=0; i<listOfPosts.size(); i++){
+        for(int i=0; i<postIndexi.size(); i++){
             StandardPostView postView = new StandardPostView(this.getContext(), false);
-            MMLSpost currentPost = listOfPosts.get(i);
-            postView.setResVals(currentPost, null);
+            postView.setResVals(postmaster.getPost(postIndexi.get(i)), null);
             insertion_point.addView(postView.getView());
         }
 

@@ -23,7 +23,7 @@ import mmls.Posthandler;
 public class NewPostFragment extends Fragment {
     View view;
     Posthandler postmaster;
-    List<MMLSpost> listOfPosts;
+    List<Integer> postIndexi;
     ViewGroup insertion_point;
 
     private static final String logtag = "IMN_DEBUG_TEST";
@@ -56,15 +56,14 @@ public class NewPostFragment extends Fragment {
         }
 
         //obtain list of unnotified posts
-        listOfPosts = postmaster.getPostList(false);
+        postIndexi = postmaster.getPostList(false);
 
-        Log.d(logtag,"size: " + listOfPosts.size());
+        Log.d(logtag,"size: " + postIndexi.size());
         //create each unnotified post
-        for(int i=0; i<listOfPosts.size(); i++){
+        for(int i=0; i<postIndexi.size(); i++){
             final StandardPostView postView = new StandardPostView(this.getContext(), true);
-            MMLSpost currentPost = listOfPosts.get(i);
-            //Log.d(logtag,"currentpost: " + currentPost);
-            final int temp = i;
+            //MMLSpost currentPost = listOfPosts.get(i);
+            final int temp = postIndexi.get(i);
             View.OnClickListener click = new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
@@ -76,7 +75,7 @@ public class NewPostFragment extends Fragment {
                     postmaster.saveFile(filename);
                 }
             };
-            postView.setResVals(currentPost, click);
+            postView.setResVals(postmaster.getPost(temp), click);
             insertion_point.addView(postView.getView());
         }
 
