@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import altf4.imn.R;
 
+import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
+
 public class StandardPostView extends RelativeLayout {
 
     private static final String logtag = "StandardPostView";
@@ -21,10 +23,13 @@ public class StandardPostView extends RelativeLayout {
     private String mDate;
     private String mContent;
     private Context mContext;
+    private boolean mEye;
+    private View.OnClickListener click;
 
-    public StandardPostView(Context context){
+    public StandardPostView(Context context, boolean eye){
         super(context);
         mContext = context;
+        mEye = eye;
     }
 
     public StandardPostView(Context context, AttributeSet attrs){
@@ -32,13 +37,15 @@ public class StandardPostView extends RelativeLayout {
         mContext = context;
     }
 
-    public void setResVals(String pTitle, String pCourse, String pAuthor, String pDate, String pContent){
+    public void setResVals(String pTitle, String pCourse, String pAuthor, String pDate, String pContent,
+                           View.OnClickListener pClick){
         //used after the constructor to configure the texts
         mTitle = pTitle;
         mCourse = pCourse;
         mAuthor = pAuthor;
         mDate = pDate;
         mContent = pContent;
+        click = pClick;
         initView();
     }
 
@@ -64,16 +71,13 @@ public class StandardPostView extends RelativeLayout {
         txtAuthor.setText(mAuthor);
         txtDate.setText(mDate);
         txtContent.setText(mContent);
-        //txtContent.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD); REQUIRES API 26 and above. too bad for suilyn >.<
+        txtContent.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD); //REQUIRES API 26 and above. too bad for suilyn >.<
+        if(!mEye){
+            actionButton.setVisibility(View.INVISIBLE);
+        }else{
+            actionButton.setOnClickListener(click);
+        }
 
-
-        actionButton.setOnClickListener(new OnClickListener(){
-            @Override
-            public void onClick(View v){
-                //donothing for now
-                //TODO: Set this up
-            }
-        });
         Log.d(logtag,"initView complete");
     }
 

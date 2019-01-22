@@ -56,16 +56,29 @@ public class NewPostFragment extends Fragment {
         }
 
         //obtain list of unnotified posts
-        listOfPosts = postmaster.getPostList(true);
+        listOfPosts = postmaster.getPostList(false);
 
         Log.d(logtag,"size: " + listOfPosts.size());
         //create each unnotified post
         for(int i=0; i<listOfPosts.size(); i++){
-            StandardPostView postView = new StandardPostView(this.getContext());
+            StandardPostView postView = new StandardPostView(this.getContext(), true);
             MMLSpost currentPost = listOfPosts.get(i);
-            Log.d(logtag,"currentpost: " + currentPost);
+            //Log.d(logtag,"currentpost: " + currentPost);
+            final int temp = i;
+            final StandardPostView tempPostView = postView;
+            final String tempFilename = filename;
+            View.OnClickListener click = new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    Log.d(logtag, Integer.toString(temp)+" Notified: " + postmaster.getPost(temp).isNotified());
+                    postmaster.notifyPost(temp);
+                    Log.d(logtag, Integer.toString(temp)+" Notified: " + postmaster.getPost(temp).isNotified());
+                    insertion_point.removeView(tempPostView.getView());
+                    postmaster.saveFile(tempFilename);
+                }
+            };
             postView.setResVals(currentPost.getTitle(), currentPost.getCourse(),
-                    currentPost.getAuthor(), currentPost.getDate(), currentPost.getContent());
+                    currentPost.getAuthor(), currentPost.getDate(), currentPost.getContent(), click);
             insertion_point.addView(postView.getView());
         }
 

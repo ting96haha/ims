@@ -55,20 +55,19 @@ public class OldPostFragment extends Fragment {
         }
 
         //obtain list of notified posts
-        listOfPosts = postmaster.getPostList(false);
+        listOfPosts = postmaster.getPostList(true);
+
 
         Log.d(logtag,"size: " + listOfPosts.size());
         //create each unnotified post
         for(int i=0; i<listOfPosts.size(); i++){
-            StandardPostView postView = new StandardPostView(this.getContext());
+            StandardPostView postView = new StandardPostView(this.getContext(), false);
             MMLSpost currentPost = listOfPosts.get(i);
-            Log.d(logtag,"test");
             postView.setResVals(currentPost.getTitle(), currentPost.getCourse(),
-                    currentPost.getAuthor(), currentPost.getDate(), currentPost.getContent());
+                    currentPost.getAuthor(), currentPost.getDate(), currentPost.getContent(), null);
             insertion_point.addView(postView.getView());
         }
 
-        //return inflater.inflate(R.layout.fragment_old_post, container, false);
         return view;
     }
 
