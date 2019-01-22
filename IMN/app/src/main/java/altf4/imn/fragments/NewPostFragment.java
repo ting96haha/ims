@@ -42,7 +42,7 @@ public class NewPostFragment extends Fragment {
         String stdprefid = prefs.getString("mmls_id",getContext().getString(R.string.nologin));
 
         //get filename
-        String filename = getContext().getFilesDir().toString() + "/" + stdprefid + ".dat";
+        final String filename = getContext().getFilesDir().toString() + "/" + stdprefid + ".dat";
 
 
         if(PageObtainTask.checkFilExist(filename)){
@@ -61,24 +61,22 @@ public class NewPostFragment extends Fragment {
         Log.d(logtag,"size: " + listOfPosts.size());
         //create each unnotified post
         for(int i=0; i<listOfPosts.size(); i++){
-            StandardPostView postView = new StandardPostView(this.getContext(), true);
+            final StandardPostView postView = new StandardPostView(this.getContext(), true);
             MMLSpost currentPost = listOfPosts.get(i);
             //Log.d(logtag,"currentpost: " + currentPost);
             final int temp = i;
-            final StandardPostView tempPostView = postView;
-            final String tempFilename = filename;
             View.OnClickListener click = new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
                     Log.d(logtag, Integer.toString(temp)+" Notified: " + postmaster.getPost(temp).isNotified());
+                    Log.d(logtag, postmaster.getPost(temp).getTitle());
                     postmaster.notifyPost(temp);
                     Log.d(logtag, Integer.toString(temp)+" Notified: " + postmaster.getPost(temp).isNotified());
-                    insertion_point.removeView(tempPostView.getView());
-                    postmaster.saveFile(tempFilename);
+                    insertion_point.removeView(postView.getView());
+                    postmaster.saveFile(filename);
                 }
             };
-            postView.setResVals(currentPost.getTitle(), currentPost.getCourse(),
-                    currentPost.getAuthor(), currentPost.getDate(), currentPost.getContent(), click);
+            postView.setResVals(currentPost, click);
             insertion_point.addView(postView.getView());
         }
 

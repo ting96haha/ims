@@ -63,8 +63,7 @@ public class OldPostFragment extends Fragment {
         for(int i=0; i<listOfPosts.size(); i++){
             StandardPostView postView = new StandardPostView(this.getContext(), false);
             MMLSpost currentPost = listOfPosts.get(i);
-            postView.setResVals(currentPost.getTitle(), currentPost.getCourse(),
-                    currentPost.getAuthor(), currentPost.getDate(), currentPost.getContent(), null);
+            postView.setResVals(currentPost, null);
             insertion_point.addView(postView.getView());
         }
 
