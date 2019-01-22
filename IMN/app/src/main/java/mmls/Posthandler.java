@@ -70,6 +70,21 @@ public class Posthandler  implements Serializable{
     for(MMLSpost p : this.postlist){
       if(!p.isNotified()){
         p.postprint();
+        if(!setNotify){
+          out.add(p);
+          p.notifyPost();
+        }
+      }
+    }
+    return out;
+  }
+
+  public List<MMLSpost> getNotifiedPost(Boolean setNotify){
+    List<MMLSpost> out = new ArrayList<MMLSpost>();
+
+    for(MMLSpost p : this.postlist){
+      if(p.isNotified()){
+        p.postprint();
         if(setNotify){
           out.add(p);
           p.notifyPost();
