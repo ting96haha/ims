@@ -73,7 +73,7 @@ public class Posthandler  implements Serializable{
     List<MMLSpost> out = new ArrayList<MMLSpost>();
 
     for(MMLSpost p : this.postlist){
-      if(p.isNotified() ^ isNotified){
+      if(!(p.isNotified() ^ isNotified)){
         p.postprint();
         out.add(p);
       }
@@ -95,19 +95,6 @@ public class Posthandler  implements Serializable{
       System.out.println();
     }
   }
-
-  public void displayUnNotifiedPost(Boolean setNotify){
-    for(MMLSpost p : this.postlist){
-      if(!p.isNotified()){
-        p.postprint();
-        if(setNotify){
-          p.notifyPost();
-        }
-        System.out.println();
-      }
-    }
-  }
-
 
   public void saveFile(String filename){
     //saves the file under the directory student_id
