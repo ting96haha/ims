@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import altf4.imn.R;
+import mmls.MMLSpost;
 
 import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
@@ -37,14 +38,13 @@ public class StandardPostView extends RelativeLayout {
         mContext = context;
     }
 
-    public void setResVals(String pTitle, String pCourse, String pAuthor, String pDate, String pContent,
-                           View.OnClickListener pClick){
+    public void setResVals(MMLSpost currentPost, View.OnClickListener pClick){
         //used after the constructor to configure the texts
-        mTitle = pTitle;
-        mCourse = pCourse;
-        mAuthor = pAuthor;
-        mDate = pDate;
-        mContent = pContent;
+        mTitle = currentPost.getTitle();
+        mCourse = currentPost.getCourse();
+        mAuthor = currentPost.getAuthor();
+        mDate = currentPost.getDate();
+        mContent = currentPost.getContent();
         click = pClick;
         initView();
     }
