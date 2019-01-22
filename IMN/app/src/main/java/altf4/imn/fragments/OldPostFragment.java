@@ -55,7 +55,7 @@ public class OldPostFragment extends Fragment {
         }
 
         //obtain list of notified posts
-        listOfPosts = postmaster.getNotifiedPost(false);
+        listOfPosts = postmaster.getPostList(false);
 
         Log.d(logtag,"size: " + listOfPosts.size());
         //create each unnotified post
