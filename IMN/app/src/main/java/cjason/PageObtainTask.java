@@ -41,7 +41,7 @@ public class PageObtainTask extends AsyncTask<Context,Void, MMLSparser> {
 
     }
 
-    private static Boolean checkFilExist(String filename){
+    public static Boolean checkFilExist(String filename){
         File f = new File(filename);
         if(f.exists() && !f.isDirectory()) {
             // do something
@@ -60,7 +60,7 @@ public class PageObtainTask extends AsyncTask<Context,Void, MMLSparser> {
         Posthandler postmaster;
         if(checkFilExist(filename)){
             //file exists, load from file
-            Log.d(logtag,"User history does not exist. Reading from old PostHandler");
+            Log.d(logtag,"User history exists. Reading from old PostHandler");
             postmaster = Posthandler.readFile(filename);
         }else{
             //create new postmaster
@@ -72,6 +72,6 @@ public class PageObtainTask extends AsyncTask<Context,Void, MMLSparser> {
         postmaster.checkList(parser.parsePost());
         postmaster.displayUnNotifiedPost(false);
         postmaster.saveFile(filename);
-        Log.d(logtag,"New Posts:"+Integer.toString(newcount -  postmaster.getCount()));
+        Log.d(logtag,"New Posts:"+Integer.toString(postmaster.getCount()-newcount ));
     }
 }

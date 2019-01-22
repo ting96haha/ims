@@ -81,7 +81,6 @@ public class Posthandler  implements Serializable{
     return out;
   }
 
-
   public int getCount(){
     return postlist.size();
   }

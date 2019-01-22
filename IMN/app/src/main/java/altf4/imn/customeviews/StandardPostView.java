@@ -16,6 +16,9 @@ public class StandardPostView extends RelativeLayout {
 
     private View rootView;
     private String mTitle;
+    private String mCourse;
+    private String mAuthor;
+    private String mDate;
     private String mContent;
     private Context mContext;
 
@@ -29,25 +32,37 @@ public class StandardPostView extends RelativeLayout {
         mContext = context;
     }
 
-    public void setResVals(String pTitle,String pContent){
+    public void setResVals(String pTitle, String pCourse, String pAuthor, String pDate, String pContent){
         //used after the constructor to configure the texts
         mTitle = pTitle;
+        mCourse = pCourse;
+        mAuthor = pAuthor;
+        mDate = pDate;
         mContent = pContent;
         initView();
     }
 
     private void initView(){
         TextView txtContent;
+        TextView txtCourse;
+        TextView txtAuthor;
+        TextView txtDate;
         TextView txtTitle;
         ImageView actionButton;
 
         rootView = inflate(mContext, R.layout.item_standard_post_view, this);
 
         txtTitle = rootView.findViewById(R.id.txtTitle);
+        txtCourse = rootView.findViewById(R.id.txtCourse);
+        txtAuthor = rootView.findViewById(R.id.txtAuthor);
+        txtDate = rootView.findViewById(R.id.txtDate);
         txtContent = rootView.findViewById(R.id.txtContent);
         actionButton = rootView.findViewById(R.id.imgView);
 
         txtTitle.setText(mTitle);
+        txtCourse.setText(mCourse);
+        txtAuthor.setText(mAuthor);
+        txtDate.setText(mDate);
         txtContent.setText(mContent);
         //txtContent.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD); REQUIRES API 26 and above. too bad for suilyn >.<
 
