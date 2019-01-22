@@ -68,14 +68,14 @@ public class Posthandler  implements Serializable{
     postlist.get(index).notifyPost();
   }
 
-  public List<MMLSpost> getPostList(Boolean isNotified){
+  public List<Integer> getPostList(Boolean isNotified){
     //get the postlist, filter by notified or not
-    List<MMLSpost> out = new ArrayList<MMLSpost>();
+    List<Integer> out = new ArrayList<>();
 
-    for(MMLSpost p : this.postlist){
-      if(!(p.isNotified() ^ isNotified)){
-        p.postprint();
-        out.add(p);
+    for(int i=0;i<this.postlist.size();i++){
+      if(postlist.get(i).isNotified() == isNotified){
+        postlist.get(i).postprint();
+        out.add(i);
       }
     }
     return out;
