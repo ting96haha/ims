@@ -52,6 +52,14 @@ public class PollReceiver extends BroadcastReceiver {
         timeoutCount = 0; //reinit timeout count
     }
 
+    public static void disableAlarms(Context ctxt){
+        AlarmManager mgr=
+                (AlarmManager)ctxt.getSystemService(Context.ALARM_SERVICE);
+        Intent i = new Intent(ctxt, PollReceiver.class);
+        PendingIntent pi = PendingIntent.getBroadcast(ctxt, 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
+        mgr.cancel(pi);
+    }
+
     //SAMPLE USE:
     /*
     PollReceiver.scheduleAlarms(this,period);

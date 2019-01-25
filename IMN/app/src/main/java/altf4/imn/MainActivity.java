@@ -58,6 +58,24 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    protected void onPause(){
+        super.onPause();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences( this );
+        Boolean notibool = prefs.getBoolean("prefNotify",true);
+        String prefminut = prefs.getString("prefSyncFrequency","15");//default 15 minutes
+        //convert prefminut to seconds
+        int prefsec = Integer.parseInt(prefminut) * 60 * 1000;
+
+        Log.d(logtag,"Notify?"+notibool);
+        Log.d(logtag,"Preference Period(s):"+Integer.toString(prefsec));
+        if(notibool){
+            PollReceiver.scheduleAlarms(this,prefsec);
+        }else{
+            PollReceiver.disableAlarms(this);
+        }
+    }
+
+    @Override
     protected void onResume(){
         super.onResume();
         //obtain the preferences
@@ -72,14 +90,14 @@ public class MainActivity extends AppCompatActivity
         TextView navUsername =  headerView.findViewById(R.id.student_id);
         navUsername.setText(stdprefid);
 
-
-
         //convert prefminut to seconds
         int prefsec = Integer.parseInt(prefminut) * 60 * 1000;
 
-        Log.d(logtag,"Notify?"+notibool);
-        Log.d(logtag,"Preference Period(s):"+Integer.toString(prefsec));
-        PollReceiver.scheduleAlarms(this,prefsec); //1seconds
+        if(notibool){
+            PollReceiver.scheduleAlarms(this,prefsec);
+        }else{
+            PollReceiver.disableAlarms(this);
+        }
     }
 
     @Override
