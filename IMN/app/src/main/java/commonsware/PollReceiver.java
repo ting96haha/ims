@@ -23,7 +23,6 @@ import android.util.Log;
 
 public class PollReceiver extends BroadcastReceiver {
     private static final int PERIOD=300000; // 15 minutes
-    private static final int INITIAL_DELAY=5000; // 5 seconds
     private static int timeoutCount;
 
     @Override
@@ -47,7 +46,7 @@ public class PollReceiver extends BroadcastReceiver {
         PendingIntent pi=PendingIntent.getBroadcast(ctxt, 0, i, 0);
 
         mgr.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                SystemClock.elapsedRealtime() + INITIAL_DELAY,
+                SystemClock.elapsedRealtime() +  int_millis,
                 int_millis, pi);
         timeoutCount = 0; //reinit timeout count
     }
