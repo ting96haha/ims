@@ -66,7 +66,8 @@
             android:layout_marginLeft="7dp"
             android:textSize="15sp" />
 
-        <TextView
+        <!--<TextView-->
+        <me.biubiubiu.justifytext.library.JustifyTextView
             android:id="@+id/txtContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
