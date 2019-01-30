@@ -71,7 +71,7 @@ public class StandardPostView extends RelativeLayout {
         txtAuthor.setText(mAuthor);
         txtDate.setText(mDate);
         txtContent.setText(mContent);
-        txtContent.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD); //REQUIRES API 26 and above. too bad for suilyn >.<
+        //txtContent.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD); //REQUIRES API 26 and above. too bad for suilyn >.<
         if(!mEye){
             actionButton.setVisibility(View.INVISIBLE);
         }else{
