@@ -62,9 +62,8 @@
             android:id="@+id/txtDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtCourse"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="7dp"
+            android:layout_below="@+id/txtAuthor"
+            android:layout_marginLeft="7dp"
             android:textSize="15sp" />
 
         <TextView
