@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import java.util.List;
@@ -33,9 +34,10 @@ public class NewPostFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //returning our layout file
         //change R.layout.yourlayoutfilename for each of your fragments
-        view = inflater.inflate(R.layout.fragment_old_post, container, false);
+        view = inflater.inflate(R.layout.fragment_new_post, container, false);
 
         insertion_point = view.findViewById(R.id.insertion_point);
+        Button seen_all = view.findViewById(R.id.unall);
 
         //get student id
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -64,6 +66,7 @@ public class NewPostFragment extends Fragment {
             final StandardPostView postView = new StandardPostView(this.getContext(), true);
             //MMLSpost currentPost = listOfPosts.get(i);
             final int temp = postIndexi.get(i);
+            final int icpy = i;
             View.OnClickListener click = new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
@@ -78,6 +81,17 @@ public class NewPostFragment extends Fragment {
             postView.setResVals(postmaster.getPost(temp), click);
             insertion_point.addView(postView.getView());
         }
+
+        seen_all.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for(int j=0;j<postIndexi.size();j++){
+                    postmaster.notifyPost(postIndexi.get(j));
+                    insertion_point.removeAllViews();
+                    postmaster.saveFile(filename);
+                }
+            }
+        });
 
         return view;
     }

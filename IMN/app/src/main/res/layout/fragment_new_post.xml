@@ -7,18 +7,54 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_height="match_parent"
+    <!--
+    -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:id="@+id/nestedScrollViewInNewPost">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/insertion_point"
+        <RelativeLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="I have seen everything !"
+                android:id="@+id/unall"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:textSize="20sp"
+                android:background="@drawable/border1"
+                android:textColor="@color/White"/>
+
+        </RelativeLayout>
+
+        <android.support.v4.widget.NestedScrollView
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingTop="10dp">
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+            android:layout_width="match_parent"
+            android:id="@+id/nestedScrollViewInNewPost">
+
+            <LinearLayout
+                android:id="@+id/insertion_point"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="10dp">
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+
+    </LinearLayout>
+
+
+
+
 
 </FrameLayout>
