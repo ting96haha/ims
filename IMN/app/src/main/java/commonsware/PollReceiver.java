@@ -23,40 +23,40 @@ import android.util.Log;
 
 public class PollReceiver extends BroadcastReceiver {
     private static final int PERIOD=300000; // 15 minutes
-    private static int timeoutCount;
+    private static final String logtag = "IMN_DEBUG_CHANNEL";
 
     @Override
     public void onReceive(Context ctxt, Intent i) {
-        timeoutCount++; //increments
         if (i.getAction() == null) {
-            Log.d(getClass().getPackage().getName(), "AlarmTimeout event. work enqued");
-            ScheduledService.launchAlarm(ctxt,timeoutCount);
+            Log.d(logtag, "AlarmTimeout event. work enqued");
+            ScheduledService.launchAlarm(ctxt);
         }
         else {
-            int reschedule_millis = i.getIntExtra("retime",PERIOD);
-            scheduleAlarms(ctxt,reschedule_millis);
-            Log.d(getClass().getPackage().getName(), "Retime @"+Integer.toString(reschedule_millis));
+            Log.d(logtag, "Full reschedule event for 15 min");
+            scheduleAlarms(ctxt,900000);
         }
     }
 
     public static void scheduleAlarms(Context ctxt, int int_millis) {
+        Log.d(logtag,"Scheduling Alarm for "+Long.toString(int_millis));
         AlarmManager mgr=
                 (AlarmManager)ctxt.getSystemService(Context.ALARM_SERVICE);
         Intent i=new Intent(ctxt, PollReceiver.class);
         PendingIntent pi=PendingIntent.getBroadcast(ctxt, 0, i, 0);
 
-        mgr.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+        mgr.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
                 SystemClock.elapsedRealtime() +  int_millis,
                 int_millis, pi);
-        timeoutCount = 0; //reinit timeout count
+        Log.d(logtag,"Alarm scheduled");
     }
 
     public static void disableAlarms(Context ctxt){
         AlarmManager mgr=
                 (AlarmManager)ctxt.getSystemService(Context.ALARM_SERVICE);
         Intent i = new Intent(ctxt, PollReceiver.class);
-        PendingIntent pi = PendingIntent.getBroadcast(ctxt, 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pi = PendingIntent.getBroadcast(ctxt, 0, i,0);
         mgr.cancel(pi);
+        Log.d(logtag,"Alarm cancelled");
     }
 
     //SAMPLE USE:

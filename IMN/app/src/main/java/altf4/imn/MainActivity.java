@@ -1,6 +1,8 @@
 package altf4.imn;
 
 
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setupNoti();
         initNavBars(); //initialize the navigation bars
 
 
@@ -60,6 +64,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onPause(){
         super.onPause();
+        /*
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences( this );
         Boolean notibool = prefs.getBoolean("prefNotify",true);
         String prefminut = prefs.getString("prefSyncFrequency","15");//default 15 minutes
@@ -68,10 +73,35 @@ public class MainActivity extends AppCompatActivity
 
         Log.d(logtag,"Notify?"+notibool);
         Log.d(logtag,"Preference Period(s):"+Integer.toString(prefsec));
+        PollReceiver.disableAlarms(this);
         if(notibool){
             PollReceiver.scheduleAlarms(this,prefsec);
-        }else{
+        }
+        */
+    }
+
+    private void setupNoti(){
+        Log.d(logtag,"Setting up notification timer");
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences( this );
+        Boolean notibool = prefs.getBoolean("prefNotify",true);
+        String prefminut = prefs.getString("prefSyncFrequency","15");//default 15 minutes
+
+        //convert prefminut to seconds
+        int prefsec = Integer.parseInt(prefminut) * 60 * 1000;
+
+        boolean alarmUp = (PendingIntent.getBroadcast(this, 0,
+                new Intent(this, PollReceiver.class),
+                PendingIntent.FLAG_NO_CREATE) != null);
+
+        //PollReceiver.disableAlarms(this);
+        if(notibool && !alarmUp){
+            Toast.makeText(this,"Setting up notification alarms.",Toast.LENGTH_LONG).show();
+            PollReceiver.scheduleAlarms(this,prefsec);
+        }else if(!notibool){
+            Toast.makeText(this,"Disabled notifications alarms",Toast.LENGTH_LONG).show();
             PollReceiver.disableAlarms(this);
+        }else{
+            Toast.makeText(this,"Notifications alarm is up and running.",Toast.LENGTH_LONG).show();
         }
     }
 
@@ -80,8 +110,6 @@ public class MainActivity extends AppCompatActivity
         super.onResume();
         //obtain the preferences
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences( this );
-        Boolean notibool = prefs.getBoolean("prefNotify",true);
-        String prefminut = prefs.getString("prefSyncFrequency","15");//default 15 minutes
         String stdprefid = prefs.getString("mmls_id",getString(R.string.nologin));
 
         //Set the username on the navbar
@@ -90,13 +118,8 @@ public class MainActivity extends AppCompatActivity
         TextView navUsername =  headerView.findViewById(R.id.student_id);
         navUsername.setText(stdprefid);
 
-        //convert prefminut to seconds
-        int prefsec = Integer.parseInt(prefminut) * 60 * 1000;
-
-        if(notibool){
-            PollReceiver.scheduleAlarms(this,prefsec);
-        }else{
-            PollReceiver.disableAlarms(this);
+        if(stdprefid.equals(getString(R.string.nologin))){
+            Toast.makeText(this,"Warning, Student account not setup !",Toast.LENGTH_LONG).show();
         }
     }
 

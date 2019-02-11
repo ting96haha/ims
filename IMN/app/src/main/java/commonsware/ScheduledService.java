@@ -39,16 +39,15 @@ public class ScheduledService extends JobIntentService {
                 new Intent(ctxt, ScheduledService.class));
     }
 
-    static void launchAlarm(Context ctxt,int timeoutCount){
+    static void launchAlarm(Context ctxt){
         Intent target = new Intent(ctxt,ScheduledService.class);
-        target.putExtra("timeoutCount",timeoutCount);
         enqueueWork(ctxt, ScheduledService.class, UNIQUE_JOB_ID,
                 target);
     }
 
     @Override
     public void onHandleWork(Intent i) {
-        Log.d(getClass().getPackage().getName(), "JobIntentService execute.");
+        Log.d("IMN_DEBUG_CHANNEL", "JobIntentService execute.");
         //------------------------------------------------------------------------------------------
         //      TODO: EDIT NON PERSISTENT CODE HERE
         //------------------------------------------------------------------------------------------

@@ -6,8 +6,8 @@ android {
         applicationId "altf4.imn"
         minSdkVersion 18
         targetSdkVersion 28
-        versionCode 3
-        versionName "Re-release 1.2"
+        versionCode 4
+        versionName "Re-release 1.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
